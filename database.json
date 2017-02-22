@@ -1,0 +1,36 @@
+{
+    "todoList": [
+        {
+            "item": "Conker's Bad Fur Day",
+            "done": false
+        },
+        {
+            "item": "Banjo Kazooie",
+            "done": false
+        },
+        {
+            "item": "Super Smash Bros.",
+            "done": true
+        },
+        {
+            "item": "Goldeneye",
+            "done": true
+        },
+        {
+            "item": "Majora's Mask",
+            "done": false
+        },
+        {
+            "item": "Mario Kart",
+            "done": true
+        },
+        {
+            "item": "Ocarina of Time",
+            "done": true
+        },
+        {
+            "item": "Paper Mario",
+            "done": false
+        }
+    ]
+}

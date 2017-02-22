@@ -1,17 +1,47 @@
-<ion-header>
+<!--Created: February 21, 2017
+    N64 Game Collection List
+    Jesse Baril
+    200226521
+    This is the layout page for the to-do list -->
+<ion-header center text-center>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>N64 Game Collection List</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content center text-center>
+  <!-- Add item button -->
+  <button ion-button round block (click)="addItem()">
+    <ion-icon name="add"></ion-icon>
+    Add New Game
+  </button>
+  <ion-list inset *ngFor="let listItem of listItems | async; let i = index;">
+    <ion-item-sliding (click)="switchComplete(listItem.$key, listItem.done)">
+      
+      <!-- If item is completed show normally -->
+      <ion-item text-wrap *ngIf="listItem.done === true">
+        <ion-label>
+          <s> {{i+1}}. {{listItem.item}} </s>
+        </ion-label>
+        <ion-checkbox color="positive" checked="true" disabled="true"></ion-checkbox>
+      </ion-item>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+      <!-- If item is completed, check box and cross line through text -->
+      <ion-item text-wrap *ngIf="listItem.done === false">
+        <ion-label>
+          {{i+1}}. {{listItem.item}}
+        </ion-label>
+        <ion-checkbox color="positive" checked="false" (click)="switchComplete(listItem.$key, listItem.done)"></ion-checkbox>
+      </ion-item>
+      
+      <!-- Options for item slide -->
+      <ion-item-options>
+        <button ion-button large color="primary" (click)="updateItem(listItem.$key, listItem.item)">
+          <ion-icon name="md-settings"></ion-icon>
+        </button>
+        <button ion-button large color="danger" (click)="removeItem(listItem.$key)">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
